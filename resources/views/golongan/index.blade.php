@@ -6,6 +6,11 @@
     <div class="panel panel-info">
         <div class="panel-heading">Golongan</div>
         <div class="panel-body">
+
+<form action="" method="get">
+<input type="text"  placeholder="Cari" name="id_golongan">
+<input class="btn btn-sm btn-primary" type="submit" value="Cari" />
+</form>
         <a class="btn btn-success" href="{{url('golongan/create')}}">Tambah Data</a><br><br>
             <table class="table table-striped table-bordered table-hover">
                 <thead>

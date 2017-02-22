@@ -9,8 +9,8 @@
                 <thead>
                     <tr class="bg-primary">
                         <th>No</th>
-                        <th>Id Kode Lembur</th>
-                        <th>Id Pegawai</th>
+                        <th>Kode Lembur</th>
+                        <th>Nama Pegawai</th>
                         <th>Jumlah Jam</th>
                         <th colspan="3"><center>Opsi</th>
                     </tr>
@@ -26,7 +26,7 @@
                         <td> <?php echo e($data->jumlah_jam); ?></td>
                         <td><a href="<?php echo e(route('lemburpegawai.edit',$data->id)); ?>" class="btn btn-warning">Edit</a></td>
                         <td><a data-toggle="modal" href="#delete<?php echo e($data->id); ?>" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
-                         <?php echo $__env->make('models.delete',['url'=>route('lemburpegawai.destroy',$data->id),'modal'=>$data], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+                         <?php echo $__env->make('models.delete',['url'=>route('lemburpegawai.destroy',$data->id),'model'=>$data], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
                                    
                     
                     </tr>

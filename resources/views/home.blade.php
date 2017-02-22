@@ -8,14 +8,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Penggajian') }}</title>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
-        window.Laravel = <?php echo json_encode([
+        window.Penggajian = <?php echo json_encode([
             'csrfToken' => csrf_token(),
         ]); ?>
     </script>
@@ -35,8 +35,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ url('/p') }}">
+                        {{ config('app.name', 'Penggajian') }}
                     </a>
                 </div>
 
@@ -74,10 +74,11 @@
 
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Daftar Halaman<span class="caret"></span>
-                                </a>
+                            <div class="btn-group">
+                                <button class="btn btn-info">Daftar Halaman</button>
+                                <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                                </button>
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="{{ url('/jabatan') }}">Jabatan</a></li>
@@ -89,7 +90,7 @@
                                     <li><a href="{{ url('/tunjanganpegawai') }}">Tunjangan Pegawai</a></li>
                                     <li><a href="{{ url('/penggajian') }}">Penggajian</a></li>
                                 </ul>
-                            </li>
+                           </div>
                         @endif
                     </ul>
                 </div>

@@ -8,6 +8,8 @@ use App\jabatan;
 use App\golongan;
 use Request;
 use Form;
+use Validator;
+use Input;
 
 class KategoriController extends Controller
 {
@@ -44,9 +46,25 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $kategori=Request::all();
+         $rules=['kode_lembur'=>'required:kategori_lemburs',
+                 'besaran_uang'=>'required:kategori_lemburs'];
+         $message=['kode_lembur.required'=>'Kolom Jangan Kosong',
+                   'besaran_uang.required'=>'Kolom Jangan Kosong'];
+         $validator=Validator::make(Input::all(),$rules,$message);
+
+        if ($validator->fails())
+         {
+            # code...
+            return redirect('/kategori/create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        else
+        {
         kategori_lembur::create($kategori);
         return redirect('kategori');
     }
+}
 
     /**
      * Display the specified resource.

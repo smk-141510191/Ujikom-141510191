@@ -7,6 +7,8 @@ use App\golongan;
 use App\pegawai;
 use App\kategori_lembur;
 use Form;
+use Validator;
+use Input;
 
 class GolonganController extends Controller
 {
@@ -40,9 +42,32 @@ class GolonganController extends Controller
      */
     public function store(Request $request)
     {
+
+
+       
         $golongan=Request::all();
+                 $rules=['kode_golongan'=>'required:golongans',
+                         'nama_golongan'=>'required:golongans',
+                         'besaran_uang'=>'required:golongans'];
+         $message=[
+         'kode_golongan.required'=>'Kolom Jangan Kosong',
+         'nama_golongan.required'=>'Kolom Jangan Kosong',
+         'besaran_uang.required'=>'Kolom Jangan Kosong'];
+         $validator=Validator::make(Input::all(),$rules,$message);
+
+        if ($validator->fails())
+         {
+            # code...
+            return redirect('/golongan/create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        else
+        {
+         
         golongan::create($golongan);
         return redirect('golongan');
+        }
     }
 
     /**

@@ -13,7 +13,7 @@ class golongan extends Model
 
     public function tunjangan()
     {
-    	return $this->hasMany('App\tunjangan','id_jabatan');
+    	return $this->hasMany('App\tunjangan','id_golongan');
     }
     public function kategori_lembur()
     {
@@ -21,6 +21,6 @@ class golongan extends Model
     }
     public function pegawai()
     {
-        return $this->BelongsTo('App\pegawai','id_golongan');
+        return $this->hasMany('App\pegawai','id_golongan');
     }
 }

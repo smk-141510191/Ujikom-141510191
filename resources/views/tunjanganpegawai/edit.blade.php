@@ -4,45 +4,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading"><center>Register</center></div>
+            <div class="panel panel-default">
+                <div class="panel-heading">Edit Data Tunjangan Pegawai</div>
+
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ route('tunjangan_pegawai.update',$tunjangan_pegawai->id) }}">
-                        <input name="_method" type="hidden" value="PATCH">
-                        {{ csrf_field() }}
-                            
-                            <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Nip Pegawai</label>
-                            <div class="col-md-6">
-                            <select class="form-control" name="id_pegawai" required>
-                            <option >Pilih</option>
-                            @foreach($pegawai as $data)
-                            <option value="{!! $data->id !!}">{!! $data->nip !!}</option>
-                            @endforeach
-                            </select>
-                            </div>
-                            </div>
-
-                            <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Uang Tunjangan</label>
-                            <div class="col-md-6">
-                            <select class="form-control" name="id_tunjangan" required>
-                            <option >Pilih</option>
-                            @foreach($tunjangan as $data)
-                            <option value="{!! $data->id !!}">{!! $data->besaran_uang !!}</option>
-                            @endforeach
-                            </select>
-                            </div>
-                            </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    {!! Form::model($tunjanganpegawai,['method' => 'PATCH','route'=>['tunjanganpegawi.update',$tunjanganpegawai->id]]) !!}
+                <div class="form-group">
+                    {!! Form::label('Kode Tunjangan', 'Kode Tunjangan') !!}
+                    {!! Form::text('kode_tunjangan',null,['class'=>'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::label('Nama Pegawai', 'Nama Pegawai') !!}
+                    {!! Form::text('id_user',null,['class'=>'form-control']) !!}
+                </div>
+                <div class="form-group">
+                    {!! Form::submit('Simpan', ['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
                 </div>
             </div>
         </div>

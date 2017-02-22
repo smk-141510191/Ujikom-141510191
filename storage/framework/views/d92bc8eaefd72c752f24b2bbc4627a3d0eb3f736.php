@@ -29,16 +29,14 @@
                         <td> <?php echo e($data->User->email); ?> </td>
                         <td> <?php echo e($data->jabatan->nama_jabatan); ?> </td>
                         <td> <?php echo e($data->golongan->nama_golongan); ?> </td>
-                         <td><center><img src="/assets/image/<?php echo e($data->foto); ?>" width="50px" height="50px"></center></td>
+                         <td><center><img src="/assets/image/<?php echo e($data->foto); ?>" class="img-polaroid"" method="post" width="50px" height="50px"></center></td>
+                        
                             <td><center>
-                                <a href="<?php echo e(route('pegawai.edit',$data->id)); ?>" class="btn btn-primary">Edit</a>
+                            <a href="<?php echo e(route('pegawai.edit',$data->id)); ?>" class="btn btn-primary">Edit</a>
                             </center></td>
                               <td >
-                                  <center><a data-toggle="modal" href="#delete<?php echo e($data->id); ?>" class="btn btn-danger" title="Delete" data-toggle="tooltip">Delete</a></center>
-                                  <?php echo $__env->make('modals.delete', [
-                                    'url' => route('pegawai.destroy', $data->id),
-                                    'model' => $data
-                                  ], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+                            <center><a data-toggle="modal" href="#delete<?php echo e($data->id); ?>" class="btn btn-danger" title="Delete" data-toggle="tooltip">Delete</a></center>
+                        <?php echo $__env->make('models.delete',['url' => route('pegawai.destroy', $data->id),'model'=>$data], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
                         
                     </tr>
                 </tbody>

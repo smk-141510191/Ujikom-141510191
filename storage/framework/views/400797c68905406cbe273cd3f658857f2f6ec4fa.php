@@ -9,9 +9,11 @@
 
 
 			 	<div class="form-group">
-					<label>Id Kode Lembur</label>	
+					<label>Kode Lembur</label>	
+                    <div class="form-group <?php echo e($errors->has('jumlah_jam') ? 'has-errors':'message'); ?>" >
 					<div class="controls">
 				  <select class="form-control" name="kode_lembur_id">
+                  <option>pilih</option>
                                 <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <option value="<?php echo e($data->id); ?>"><?php echo e($data->kode_lembur); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
@@ -19,9 +21,11 @@
 				</div>
       
                     <div class="control-group">
-                        <label class="control-label">Id Pegawai</label>
+                        <label class="control-label">Nama Pegawai</label>
+                        <div class="form-group <?php echo e($errors->has('jumlah_jam') ? 'has-errors':'message'); ?>" >
                         <div class="controls">
-                            <select class="span11" name="id_pegawai">
+                            <select class="form-control" name="id_pegawai">
+                            <option>pilih</option>
                                 <?php $__currentLoopData = $pegawai; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getFirstLoop(); ?>
                                 <option value="<?php echo e($data->id); ?>"><?php echo e($data->User->name); ?></option>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getFirstLoop(); ?>
@@ -31,8 +35,16 @@
 
                     <div class="control-group">
                         <label class="control-label">Jumlah Jam</label>
-                        <input class="form-control" type="text" name="jumlah_jam" placeholder="Masukkan Jumlah Jam">
-                           
+
+                    <div class="form-group <?php echo e($errors->has('jumlah_jam') ? 'has-errors':'message'); ?>" >
+                                <input id="jumlah_jam" type="text" class="form-control" name="jumlah_jam" placeholder="Masukan Jumlah Jam" value="<?php echo e(old('jumlah_jam')); ?>"  autofocus>
+
+                             <?php if($errors->has('jumlah_jam')): ?>
+                                <span class="help-block">
+                                    <strong><?php echo e($errors->first('jumlah_jam')); ?></strong>
+                                </span>
+                            <?php endif; ?>
+                            </div> 
                         </div>
                  
 

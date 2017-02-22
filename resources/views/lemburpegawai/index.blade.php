@@ -11,8 +11,8 @@
                 <thead>
                     <tr class="bg-primary">
                         <th>No</th>
-                        <th>Id Kode Lembur</th>
-                        <th>Id Pegawai</th>
+                        <th>Kode Lembur</th>
+                        <th>Nama Pegawai</th>
                         <th>Jumlah Jam</th>
                         <th colspan="3"><center>Opsi</th>
                     </tr>

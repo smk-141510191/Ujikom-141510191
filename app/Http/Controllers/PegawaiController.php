@@ -7,7 +7,7 @@ use App\jabatan;
 use App\pegawai;
 use App\User;
 use App\Form;
-use App\Input;
+use Input;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -119,7 +119,7 @@ class PegawaiController extends Controller
     public function update(Request $request, $id)
     {
         //
-         $dataUpdate=Request::all();
+        $dataUpdate=Request::all();
         $pegawai=pegawai::find($id);
         $pegawai->update($dataUpdate);
         return redirect('pegawai');

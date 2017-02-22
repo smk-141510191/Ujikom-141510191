@@ -5,7 +5,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(route('pegawai.store')); ?>">
+                    <form class="form-horizontal" role="form" method="POST" action="<?php echo e(route('pegawai.store')); ?>" enctype="multipart/form-data">
                         <?php echo e(csrf_field()); ?>
 
 
@@ -62,7 +62,13 @@
                         <div class="form-group<?php echo e($errors->has('Permission') ? ' has-error' : ''); ?>">
                             <label for="permission" class="col-md-4 control-label">Permission</label>
                             <div class="col-md-6">
-                                <input id="permission" type="text" class="form-control" name="permission" value="<?php echo e(old('permission')); ?>" required autofocus>
+                            <select name="permission" class="form-control">
+
+                                    <option value="pemilik">Pilih</option>
+                                    <option value="pegawai">Pegawai</option>
+                                    <option value="pemilik">Pemilik</option>
+
+                                  </select>  
 
                                 <?php if($errors->has('permission')): ?>
                                     <span class="help-block">
@@ -71,6 +77,7 @@
                                 <?php endif; ?>
                             </div>
                         </div>
+
                 </div>
             </div>
         </div>
@@ -125,7 +132,7 @@
                             <label for="foto" class="col-md-4 control-label">Photo</label>
 
                             <div class="col-md-6">
-                                <input id="foto" type="file" class="form-control" name="foto" value="<?php echo e(old('foto')); ?>" required autofocus>
+                                <input id="foto" type="file" class="form-control" name="foto" value="<?php echo e(old('foto')); ?>" autofocus>
 
                                 <?php if($errors->has('foto')): ?>
                                     <span class="help-block">

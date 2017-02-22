@@ -6,6 +6,8 @@ use Request;
 use App\pegawai;
 use App\kategori_lembur;
 use App\lembur_pegawai;
+use Validator;
+use Input;
 
 class LemburpegawaiController extends Controller
 {
@@ -44,9 +46,23 @@ class LemburpegawaiController extends Controller
     public function store(Request $request)
     {
         $lemburpegawai=Request::all();
+         $rules=['jumlah_jam'=>'required:lembur_pegawais'];
+         $message=['jumlah_jam.required'=>'Kolom Jangan Kosong'];
+         $validator=Validator::make(Input::all(),$rules,$message);
+
+        if ($validator->fails())
+         {
+            # code...
+            return redirect('/lemburpegawai/create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        else
+        {
         lembur_pegawai::create($lemburpegawai);
         return redirect('lemburpegawai');
     }
+}
 
     /**
      * Display the specified resource.

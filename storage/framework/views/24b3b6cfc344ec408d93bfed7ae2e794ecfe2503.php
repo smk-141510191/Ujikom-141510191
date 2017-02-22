@@ -32,7 +32,7 @@
                         <td> Rp. <?php echo e($data->besaran_uang); ?> </td>
                         <td><a href="<?php echo e(route('tunjangan.edit',$data->id)); ?>" class="btn btn-warning">Edit</a></td>
                         <td><a data-toggle="modal" href="#delete<?php echo e($data->id); ?>" class="btn btn-danger" title="Delete" data-toggle="tooltip">Hapus</a>
-                         <?php echo $__env->make('models.delete',['url'=>route('tunjangan.destroy',$data->id),'modal'=>$data], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
+                         <?php echo $__env->make('models.delete',['url'=>route('tunjangan.destroy',$data->id),'model'=>$data], array_except(get_defined_vars(), array('__data', '__path')))->render(); ?></td>
                         
                     </tr>
                 </tbody>

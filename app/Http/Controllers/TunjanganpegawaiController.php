@@ -27,10 +27,10 @@ class TunjanganpegawaiController extends Controller
      */
     public function create()
     {
-         $tunjanganpegawai = tunjangan_pegawai::all();
+         
          $tunjangan = tunjangan::all();
          $pegawai = pegawai::all();
-         return view ('tunjanganpegawai.create', compact('tunjanganpegawai','pegawai','tunjangan')); 
+         return view ('tunjanganpegawai.create', compact('pegawai','tunjangan')); 
     }
 
     /**

@@ -31,16 +31,14 @@
                         <td> {{$data->User->email}} </td>
                         <td> {{$data->jabatan->nama_jabatan}} </td>
                         <td> {{$data->golongan->nama_golongan}} </td>
-                         <td><center><img src="/assets/image/{{ $data->foto }}" width="50px" height="50px"></center></td>
+                         <td><center><img src="/assets/image/{{ $data->foto }}" class="img-polaroid"" method="post" width="50px" height="50px"></center></td>
+                        
                             <td><center>
                             <a href="{{route('pegawai.edit',$data->id)}}" class="btn btn-primary">Edit</a>
                             </center></td>
                               <td >
                             <center><a data-toggle="modal" href="#delete{{ $data->id }}" class="btn btn-danger" title="Delete" data-toggle="tooltip">Delete</a></center>
-                                  @include('modals.delete', [
-                                    'url' => route('pegawai.destroy', $data->id),
-                                    'model' => $data
-                                  ])</td>
+                        @include('models.delete',['url' => route('pegawai.destroy', $data->id),'model'=>$data])</td>
                         
                     </tr>
                 </tbody>

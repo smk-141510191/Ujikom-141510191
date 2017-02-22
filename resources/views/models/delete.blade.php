@@ -12,7 +12,7 @@
 				</p>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary">YA</button>
+				<button type="submit" class="btn btn-primary">Iya</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tidak</button>
 			</div>
 			{!! Form::close() !!}

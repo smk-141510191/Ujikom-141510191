@@ -6,6 +6,8 @@ use App\jabatan;
 use App\pegawai;
 use App\Form;
 use Request;
+use Validator;
+use Input;
 
 
 class JabatanController extends Controller
@@ -43,9 +45,29 @@ class JabatanController extends Controller
     public function store(Request $request)
     {
         $jabatan=Request::all();
+        $rules=['kode_jabatan'=>'required:jabatans',
+                 'nama_jabatan'=>'required:jabatans',
+                 'besaran_uang'=>'required:jabatans'];
+         $message=[
+                  'kode_jabatan.required'=>'Kolom Jangan Kosong',
+                  'nama_jabatan.required'=>'Kolom Jangan Kosong',
+                  'besaran_uang.required'=>'Kolom Jangan Kosong',];
+         $validator=Validator::make(Input::all(),$rules,$message);
+
+        if ($validator->fails())
+         {
+            # code...
+            return redirect('/jabatan/create')
+            ->withErrors($validator)
+            ->withInput();
+        }
+        else
+        {
+
         jabatan::create($jabatan);
         return redirect('jabatan');
     }
+}
 
     /**
      * Display the specified resource.

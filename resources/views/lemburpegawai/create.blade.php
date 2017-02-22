@@ -10,9 +10,11 @@
 			 	{{csrf_field()}}
 
 			 	<div class="form-group">
-					<label>Id Kode Lembur</label>	
+					<label>Kode Lembur</label>	
+                    <div class="form-group {{$errors->has('jumlah_jam') ? 'has-errors':'message'}}" >
 					<div class="controls">
 				  <select class="form-control" name="kode_lembur_id">
+                  <option>pilih</option>
                                 @foreach ($kategori as $data)
                                 <option value="{{ $data->id }}">{{ $data->kode_lembur }}</option>
                                 @endforeach
@@ -20,9 +22,11 @@
 				</div>
       
                     <div class="control-group">
-                        <label class="control-label">Id Pegawai</label>
+                        <label class="control-label">Nama Pegawai</label>
+                        <div class="form-group {{$errors->has('jumlah_jam') ? 'has-errors':'message'}}" >
                         <div class="controls">
-                            <select class="span11" name="id_pegawai">
+                            <select class="form-control" name="id_pegawai">
+                            <option>pilih</option>
                                 @foreach ($pegawai as $data)
                                 <option value="{{ $data->id }}">{{ $data->User->name }}</option>
                                 @endforeach
@@ -32,8 +36,16 @@
 
                     <div class="control-group">
                         <label class="control-label">Jumlah Jam</label>
-                        <input class="form-control" type="text" name="jumlah_jam" placeholder="Masukkan Jumlah Jam">
-                           
+
+                    <div class="form-group {{$errors->has('jumlah_jam') ? 'has-errors':'message'}}" >
+                                <input id="jumlah_jam" type="text" class="form-control" name="jumlah_jam" placeholder="Masukan Jumlah Jam" value="{{ old('jumlah_jam') }}"  autofocus>
+
+                             @if($errors->has('jumlah_jam'))
+                                <span class="help-block">
+                                    <strong>{{$errors->first('jumlah_jam')}}</strong>
+                                </span>
+                            @endif
+                            </div> 
                         </div>
                  
 
